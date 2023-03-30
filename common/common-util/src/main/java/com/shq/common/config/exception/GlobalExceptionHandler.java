@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -30,6 +32,26 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return Result.fail().message("执行特定处理异常...");
     }
+
+    /**
+     * 数据库查询异常处理
+     * @param ex
+     * @return
+     */
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException .class)
+    @ResponseBody
+    public Result exceptionHandler(SQLIntegrityConstraintViolationException ex){
+
+        if(ex.getMessage().contains("Duplicate entry")){
+            String[] split = ex.getMessage().split(" ");
+            String msg = split[2] + "已存着";
+            return Result.fail(msg);
+        }
+
+        return Result.fail("未知错误");
+    }
+
 
     /**
      * 自定义异常状态处理

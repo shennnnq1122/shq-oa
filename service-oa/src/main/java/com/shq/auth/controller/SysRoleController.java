@@ -1,9 +1,8 @@
-package com.shq.auth.Controller;
+package com.shq.auth.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.shq.auth.Service.SysRoleService;
+import com.shq.auth.service.SysRoleService;
 import com.shq.common.Result;
 import com.shq.model.system.SysRole;
 import io.swagger.annotations.Api;

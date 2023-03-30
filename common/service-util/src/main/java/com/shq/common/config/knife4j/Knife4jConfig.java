@@ -1,4 +1,4 @@
-package shq.common.config.knife4j;
+package com.shq.common.config.knife4j;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

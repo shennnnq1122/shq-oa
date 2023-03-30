@@ -1,4 +1,4 @@
-package shq.common.config.mp;
+package com.shq.common.config.mp;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;

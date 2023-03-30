@@ -1,8 +1,8 @@
-package com.shq.auth.Service.ServiceImpl;
+package com.shq.auth.service.serviceImpl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.shq.auth.Mapper.SysRoleMapper;
-import com.shq.auth.Service.SysRoleService;
+import com.shq.auth.mapper.SysRoleMapper;
+import com.shq.auth.service.SysRoleService;
 import com.shq.model.system.SysRole;
 import org.springframework.stereotype.Service;
 

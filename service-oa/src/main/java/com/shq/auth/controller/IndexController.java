@@ -1,4 +1,4 @@
-package com.shq.auth.Controller;
+package com.shq.auth.controller;
 
 import com.shq.common.Result;
 import io.swagger.annotations.Api;
