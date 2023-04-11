@@ -3,14 +3,19 @@ package com.shq.auth.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.shq.auth.service.SysUserRoleService;
 import com.shq.auth.service.SysUserService;
 import com.shq.common.Result;
+import com.shq.model.system.SysRole;
 import com.shq.model.system.SysUser;
 import com.shq.vo.system.SysUserQueryVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -20,12 +25,14 @@ import org.springframework.web.bind.annotation.*;
  * @author shq
  * @since 2023-03-30
  */
+@Api(tags = "用户管理接口")
 @RestController
-@RequestMapping("/admin/system/sys-user")
+@RequestMapping("/admin/system/sysUser")
 public class SysUserController {
 
     @Autowired
     private SysUserService sysUserService;
+
 
     /**
      * 用户条件分页查询
@@ -53,6 +60,7 @@ public class SysUserController {
 
         sysUserService.page(sysUserPage,queryWrapper);
 
+
         return Result.ok(sysUserPage);
 
     }
@@ -75,8 +83,8 @@ public class SysUserController {
      * @return
      */
     @ApiOperation("删除用户")
-    @GetMapping("/del/{id}")
-    public Result del(@PathVariable long id){
+    @DeleteMapping("/remove/{id}")
+    public Result remove(@PathVariable long id){
         sysUserService.removeById(id);
         return Result.ok();
     }
@@ -104,5 +112,48 @@ public class SysUserController {
         sysUserService.updateById(sysUser);
         return Result.ok();
     }
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @ApiOperation("查询所有用户")
+    @GetMapping("/getAll")
+    public  Result getAll(){
+        List<SysUser> list = sysUserService.list();
+        return Result.ok(list);
+    }
+
+    /**
+     * 批量删除用户
+     * @param ids
+     * @return
+     */
+    @ApiOperation("批量删除用户")
+    @DeleteMapping("deleteList")
+    public Result deleteList(@RequestBody List<Long> ids){
+        sysUserService.removeByIds(ids);
+        return Result.ok();
+    }
+
+    /**
+     *修改用户状态
+     * @param id
+     * @param status
+     * @return
+     */
+    @ApiOperation("修改用户状态")
+    @PutMapping("updateStatus/{id}/{status}")
+    public Result updateStatus(@PathVariable Long id ,@PathVariable Integer status){
+
+        SysUser sysUser = new SysUser();
+        sysUser.setId(id);
+        sysUser.setStatus(status);
+        sysUserService.updateById(sysUser);
+
+        return Result.ok();
+    }
+
+    //TODO 用户模块复杂功能
 }
 

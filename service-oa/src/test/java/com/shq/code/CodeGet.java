@@ -40,13 +40,14 @@ public class CodeGet {
         pc.setModuleName("auth"); //模块名
         pc.setController("controller");
         pc.setService("service");
+        pc.setServiceImpl("service/serviceImpl");
         pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 
-        strategy.setInclude("sys_user");
+        strategy.setInclude("sys_user_role");
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 

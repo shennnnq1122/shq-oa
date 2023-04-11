@@ -44,7 +44,7 @@ public class Knife4jConfig {
                 .apiInfo(adminApiInfo())
                 .select()
                 //只显示admin路径下的页面
-                .apis(RequestHandlerSelectors.basePackage("com.jerry"))
+                .apis(RequestHandlerSelectors.basePackage("com.shq"))
                 .paths(PathSelectors.regex("/admin/.*"))
                 .build()
                 .globalOperationParameters(pars);

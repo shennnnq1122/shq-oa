@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-@Api("后台登录管理")
+
 @RestController
 @RequestMapping("/admin/system/index")
 public class IndexController {
