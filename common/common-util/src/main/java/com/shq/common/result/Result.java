@@ -1,4 +1,4 @@
-package com.shq.common;
+package com.shq.common.result;
 
 import lombok.Data;
 

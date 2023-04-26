@@ -3,10 +3,8 @@ package com.shq.auth.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.shq.auth.service.SysUserRoleService;
 import com.shq.auth.service.SysUserService;
-import com.shq.common.Result;
-import com.shq.model.system.SysRole;
+import com.shq.common.result.Result;
 import com.shq.model.system.SysUser;
 import com.shq.vo.system.SysUserQueryVo;
 import io.swagger.annotations.Api;

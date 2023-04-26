@@ -1,12 +1,8 @@
 package com.shq.auth.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shq.auth.service.SysMenuService;
-import com.shq.auth.service.SysMenuService;
-import com.shq.common.Result;
-import com.shq.model.system.SysMenu;
+import com.shq.common.result.Result;
 import com.shq.model.system.SysMenu;
 import com.shq.vo.system.AssginMenuVo;
 import io.swagger.annotations.Api;

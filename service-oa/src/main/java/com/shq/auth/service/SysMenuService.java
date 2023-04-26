@@ -4,6 +4,7 @@ package com.shq.auth.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.shq.model.system.SysMenu;
 import com.shq.vo.system.AssginMenuVo;
+import com.shq.vo.system.RouterVo;
 
 import java.util.List;
 
@@ -27,4 +28,8 @@ public interface SysMenuService extends IService<SysMenu> {
 
 
     void doAssgin(AssginMenuVo assginMenuVo);
+
+    List<RouterVo> findUserMenuListByUserId(Long userId);
+
+    List<String> findUserPermsByUserId(Long userId);
 }

@@ -1,6 +1,6 @@
 package com.shq.common.config.exception;
 
-import com.shq.common.ResultCodeEnum;
+import com.shq.common.result.ResultCodeEnum;
 
 public class MyException extends RuntimeException{
 

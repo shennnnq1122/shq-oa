@@ -1,6 +1,6 @@
 package com.shq.common.config.exception;
 
-import com.shq.common.Result;
+import com.shq.common.result.Result;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
