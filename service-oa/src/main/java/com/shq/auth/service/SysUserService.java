@@ -17,4 +17,5 @@ import java.util.List;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    SysUser getByUserName(String username);
 }

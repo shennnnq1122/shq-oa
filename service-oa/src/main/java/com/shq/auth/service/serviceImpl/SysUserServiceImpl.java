@@ -25,4 +25,11 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
+    @Override
+    public SysUser getByUserName(String username) {
+        LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SysUser::getUsername,username);
+        SysUser sysUser = baseMapper.selectOne(queryWrapper);
+        return sysUser;
+    }
 }
