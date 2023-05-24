@@ -6,6 +6,7 @@ import com.shq.vo.system.AssginRoleVo;
 
 import java.util.Map;
 
+
 public interface SysRoleService extends IService<SysRole> {
     //1 查询所有角色 和 当前用户所属角色
     Map<String, Object> findRoleDataByUserId(Long userId);

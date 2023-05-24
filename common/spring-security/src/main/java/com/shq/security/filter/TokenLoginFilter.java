@@ -1,5 +1,6 @@
 package com.shq.security.filter;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shq.common.jwt.JwtHelper;
 import com.shq.common.result.Result;
@@ -7,6 +8,7 @@ import com.shq.common.result.ResultCodeEnum;
 import com.shq.common.util.ResponseUtil;
 import com.shq.security.custom.CustomUser;
 import com.shq.vo.system.LoginVo;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,12 +26,16 @@ import java.util.Map;
 
 
 
+
+
 public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
 
 
+    private RedisTemplate redisTemplate;
 
-    public TokenLoginFilter(AuthenticationManager authenticationManager) {
+    public TokenLoginFilter(AuthenticationManager authenticationManager, RedisTemplate redisTemplate) {
         this.setAuthenticationManager(authenticationManager);
+        this.redisTemplate = redisTemplate;
         this.setPostOnly(false);
         //指定登录接口及提交方式，可以指定任意路径
         this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/admin/system/index/login","POST"));
@@ -70,6 +76,9 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
                                             Authentication auth) throws IOException, ServletException {
         CustomUser customUser = (CustomUser) auth.getPrincipal();
         String token = JwtHelper.createToken(customUser.getSysUser().getId(), customUser.getSysUser().getUsername());
+
+        //获取当前用户的权限数据
+        redisTemplate.opsForValue().set(customUser.getUsername(), JSON.toJSONString(customUser.getAuthorities()));
 
         Map<String, Object> map = new HashMap<>();
         map.put("token", token);

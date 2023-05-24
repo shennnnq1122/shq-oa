@@ -3,9 +3,11 @@ package com.shq.auth.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.shq.auth.service.SysRoleService;
 import com.shq.auth.service.SysUserService;
 import com.shq.common.result.Result;
 import com.shq.model.system.SysUser;
+import com.shq.vo.system.AssginRoleVo;
 import com.shq.vo.system.SysUserQueryVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +16,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -30,6 +33,8 @@ public class SysUserController {
 
     @Autowired
     private SysUserService sysUserService;
+
+
 
 
     /**
@@ -141,7 +146,7 @@ public class SysUserController {
      * @return
      */
     @ApiOperation("修改用户状态")
-    @PutMapping("updateStatus/{id}/{status}")
+    @GetMapping("updateStatus/{id}/{status}")
     public Result updateStatus(@PathVariable Long id ,@PathVariable Integer status){
 
         SysUser sysUser = new SysUser();
@@ -151,6 +156,11 @@ public class SysUserController {
 
         return Result.ok();
     }
+
+
+
+
+
 
     //TODO 用户模块复杂功能
 }

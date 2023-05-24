@@ -7,6 +7,7 @@ import com.shq.auth.mapper.SysMenuMapper;
 import com.shq.auth.service.SysMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.shq.auth.service.SysRoleMenuService;
+import com.shq.auth.service.SysRoleService;
 import com.shq.auth.util.MenuHelper;
 import com.shq.common.config.exception.MyException;
 import com.shq.model.system.SysMenu;
@@ -37,6 +38,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Autowired
     private SysRoleMenuService sysRoleMenuService;
+
+    @Autowired
+    private SysRoleService sysRoleService;
 
     @Override
     public List<SysMenu> findNodes() {
@@ -126,6 +130,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             sysMenusList = baseMapper.selectList(queryWrapper);
         }
         else{//如果不是管理员，根据 userId 查询可以操作菜单列表
+
             sysMenusList = baseMapper.findMenuListByUserId(userId);
 
         }
