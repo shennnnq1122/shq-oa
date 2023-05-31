@@ -37,17 +37,17 @@ public class CodeGet {
         // 4、包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.shq");
-        pc.setModuleName("auth"); //模块名
+        pc.setModuleName("process"); //模块名
         pc.setController("controller");
         pc.setService("service");
-        pc.setServiceImpl("service/serviceImpl");
+        pc.setServiceImpl("service.serviceImpl");
         pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
 
-        strategy.setInclude("oa_process");
+        strategy.setInclude("process");
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 

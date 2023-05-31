@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @ApiModel(description = "ProcessType")
-@TableName("oa_process_type")
+@TableName("process_type")
 public class ProcessType extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;

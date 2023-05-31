@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.9.RELEASE</version>
+        <version>2.3.6.RELEASE</version>
     </parent>
 
     <groupId>com.shq</groupId>
@@ -85,6 +85,22 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!--            防止excel等文件乱码-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-resources-plugin</artifactId>-->
+<!--                <version>3.1</version>-->
+<!--                <configuration>-->
+<!--                    <encoding>UTF-8</encoding>-->
+<!--                    <nonFilteredFileExtensions>-->
+<!--                        <nonFilteredFileExtension>xls</nonFilteredFileExtension>-->
+<!--                        <nonFilteredFileExtension>xlsx</nonFilteredFileExtension>-->
+<!--                    </nonFilteredFileExtensions>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+
+
         </plugins>
     </build>
 

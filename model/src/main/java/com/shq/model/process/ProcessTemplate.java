@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @ApiModel(description = "ProcessTemplate")
-@TableName("oa_process_template")
+@TableName("process_template")
 public class ProcessTemplate extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
