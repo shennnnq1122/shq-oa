@@ -3,6 +3,7 @@ package com.shq.common.jwt;
 import io.jsonwebtoken.*;
 import org.springframework.util.StringUtils;
 
+
 import java.util.Date;
 
 public class JwtHelper {
@@ -39,7 +40,7 @@ public class JwtHelper {
 
     public static String getUsername(String token) {
         try {
-            if (StringUtils.isEmpty(token)) return "";
+            if (StringUtils.isEmpty(token)) return null;
 
             Jws<Claims> claimsJws = Jwts.parser().setSigningKey(tokenSignKey).parseClaimsJws(token);
             Claims claims = claimsJws.getBody();
@@ -49,6 +50,7 @@ public class JwtHelper {
             return null;
         }
     }
+
     public static void main(String[] args) {
         String token = JwtHelper.createToken(1L, "admin");
         System.out.println(token);

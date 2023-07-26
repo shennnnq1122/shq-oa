@@ -6,6 +6,7 @@ import com.shq.model.system.SysRole;
 import com.shq.model.system.SysUser;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -18,4 +19,6 @@ import java.util.List;
 public interface SysUserService extends IService<SysUser> {
 
     SysUser getByUserName(String username);
+
+    Map<String, Object> getCurrentUser();
 }

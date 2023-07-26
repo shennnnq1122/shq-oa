@@ -5,6 +5,7 @@ import com.shq.common.jwt.JwtHelper;
 import com.shq.common.result.Result;
 import com.shq.common.result.ResultCodeEnum;
 import com.shq.common.util.ResponseUtil;
+import com.shq.security.custom.LoginUserInfoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -60,6 +61,11 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         String token = request.getHeader("token");
         if(!StringUtils.isEmpty(token)){
             String username = JwtHelper.getUsername(token);
+
+            //通过ThreadLocal记录当前登录人信息
+            LoginUserInfoHelper.setUserId(JwtHelper.getUserId(token));
+            LoginUserInfoHelper.setUsername(username);
+
             if (!StringUtils.isEmpty(username)) {
 
                 String authoritiesString = (String) redisTemplate.opsForValue().get(username);
