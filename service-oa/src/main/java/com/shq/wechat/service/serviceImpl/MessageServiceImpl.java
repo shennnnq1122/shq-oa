@@ -18,6 +18,7 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -40,6 +41,9 @@ public class MessageServiceImpl implements MessageService {
     @Resource
     private SysUserService sysUserService;
 
+    @Value("${local.ip}")
+    private String ip;
+
     @SneakyThrows
     @Override
     public void pushPendingMessage(Long processId, Long userId, String taskId) {
@@ -55,7 +59,7 @@ public class MessageServiceImpl implements MessageService {
         WxMpTemplateMessage templateMessage = WxMpTemplateMessage.builder()
                 .toUser(openid)//要推送的用户openid
                 .templateId("HRZL_s7sZqGFuySb4zdq4Zv4x_W9YeRvbUg8lIcOCpg")//模板id
-                .url("http://shennnn.top:9090/#/show/"+processId+"/"+taskId)//点击模板消息要访问的网址
+                .url("http://" + ip + ":9090/#/show/"+processId+"/"+taskId)//点击模板消息要访问的网址
                 .build();
         JSONObject jsonObject = JSON.parseObject(process.getFormValues());
         JSONObject formShowData = jsonObject.getJSONObject("formShowData");
@@ -85,7 +89,7 @@ public class MessageServiceImpl implements MessageService {
         WxMpTemplateMessage templateMessage = WxMpTemplateMessage.builder()
                 .toUser(openid)//要推送的用户openid
                 .templateId("VrsNJl5Q8UN60s335dRK4KO7PFrMUprdrkCRaznvHPM")//模板id
-                .url("http://shennnn.top:9090/#/show/"+processId+"/0")//点击模板消息要访问的网址
+                .url("http://" + ip + ":9090/#/show/"+processId+"/0")//点击模板消息要访问的网址
                 .build();
         JSONObject jsonObject = JSON.parseObject(process.getFormValues());
         JSONObject formShowData = jsonObject.getJSONObject("formShowData");

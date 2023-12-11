@@ -14,6 +14,7 @@ public class LoginVo {
     /**
      * 密码
      */
+
     private String password;
 
     public String getUsername() {

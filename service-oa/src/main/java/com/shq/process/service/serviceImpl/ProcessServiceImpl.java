@@ -33,6 +33,7 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.history.HistoricTaskInstanceQuery;
 import org.activiti.engine.repository.Deployment;
+import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
@@ -92,17 +93,26 @@ public class ProcessServiceImpl extends ServiceImpl<ProcessMapper, Process> impl
     }
 
     @Override
-    public void deployByZip(String deployPath) {
+    public String deployByZip(InputStream inputStream) {
         // 定义zip输入流
-        InputStream inputStream = this
-                .getClass()
-                .getClassLoader()
-                .getResourceAsStream(deployPath);
+//        InputStream inputStream = this
+//                .getClass()
+//                .getClassLoader()
+//                .getResourceAsStream(deployPath);
         ZipInputStream zipInputStream = new ZipInputStream(inputStream);
         // 流程部署
         Deployment deployment = repositoryService.createDeployment()
                 .addZipInputStream(zipInputStream)
                 .deploy();
+        // 获取部署的流程定义
+        ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
+                .deploymentId(deployment.getId())
+                .singleResult();
+
+        // 获取流程定义的资源信息
+        String processDefinitionId = processDefinition.getId();
+        return processDefinitionId;
+
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.shq.vo.process.ProcessFormVo;
 import com.shq.vo.process.ProcessQueryVo;
 import com.shq.vo.process.ProcessVo;
 
+import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -23,7 +24,7 @@ public interface ProcessService extends IService<Process> {
 
     IPage<ProcessVo> selectPage(Page<ProcessVo> pageParam, ProcessQueryVo processQueryVo);
 
-    void deployByZip(String deployPath);
+    String deployByZip(InputStream inputStream);
 
     void startUp(ProcessFormVo processFormVo);
 

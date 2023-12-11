@@ -9,11 +9,11 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/shq-oa?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8
-#    url: jdbc:mysql://47.113.148.180:3306/guigu-oa?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8
+#    url: jdbc:mysql://shennnn.top:3306/guigu-oa?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8
     username: root
     password: as3382517
   redis:
-    host: 47.113.148.180
+    host: shennnn.top
 #    host: localhost
     port: 6379
     database: 0
@@ -45,3 +45,6 @@ wechat:
   mpAppSecret: 157aa642de42461c062894e0ab0dcf39
   # 授权回调获取用户信息接口地址
   userInfoUrl: http://shennnn.top:8800/admin/wechat/userInfo
+local:
+#  ip: shennnn.top
+  ip: 192.168.137.1

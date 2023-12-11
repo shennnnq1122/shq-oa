@@ -8,6 +8,7 @@ import com.shq.model.process.Process;
 import com.shq.vo.process.ProcessQueryVo;
 import com.shq.vo.process.ProcessVo;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * <p>
@@ -18,6 +19,7 @@ import org.apache.ibatis.annotations.Param;
  * @since 2023-05-31
  */
 public interface ProcessMapper extends BaseMapper<Process> {
+
 
     IPage<ProcessVo> selectPage(Page<ProcessVo> pageParam,@Param("vo") ProcessQueryVo processQueryVo);
 

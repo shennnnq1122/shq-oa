@@ -69,9 +69,5 @@ public class ProcessTemplateServiceImpl extends ServiceImpl<ProcessTemplateMappe
         processTemplate.setStatus(1);
         this.updateById(processTemplate);
 
-        //优先发布在线流程设计
-        if(!StringUtils.isEmpty(processTemplate.getProcessDefinitionPath())) {
-            processService.deployByZip(processTemplate.getProcessDefinitionPath());
-        }
     }
 }

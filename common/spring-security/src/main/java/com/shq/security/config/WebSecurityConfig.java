@@ -28,6 +28,7 @@ import javax.annotation.Resource;
 @EnableWebSecurity //@EnableWebSecurity是开启SpringSecurity的默认行为
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -83,7 +84,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
 
-        web.ignoring().antMatchers("/admin/modeler/**","/diagram-viewer/**","/editor-app/**","/*.html",
+        web.ignoring().antMatchers("/admin/process/information/**","/admin/modeler/**","/diagram-viewer/**","/editor-app/**","/*.html",
                 "/admin/processImage/**",
                 "/admin/wechat/authorize","/admin/wechat/userInfo","/admin/wechat/bindPhone",
                 "/favicon.ico","/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**", "/doc.html");

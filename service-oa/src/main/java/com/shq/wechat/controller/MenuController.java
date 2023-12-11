@@ -30,6 +30,8 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+
+
     //@PreAuthorize("hasAuthority('bnt.menu.list')")
     @ApiOperation(value = "获取")
     @GetMapping("get/{id}")

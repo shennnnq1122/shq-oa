@@ -68,9 +68,9 @@ public class WechatController {
         SysUser sysUser = sysUserService.getOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getOpenId, openId));
         String token = "";
         //null != sysUser 说明已经绑定，反之为建立账号绑定，去页面建立账号绑定
-//        if(null != sysUser) {
-//            token = JwtHelper.createToken(sysUser.getId(), sysUser.getUsername());
-//        }
+        if(null != sysUser) {
+            token = JwtHelper.createToken(sysUser.getId(), sysUser.getUsername());
+        }
         if(returnUrl.indexOf("?") == -1) {
             return "redirect:" + returnUrl + "?token=" + token + "&openId=" + openId;
         } else {
@@ -86,6 +86,7 @@ public class WechatController {
         if(null != sysUser) {
             sysUser.setOpenId(bindPhoneVo.getOpenId());
             sysUserService.updateById(sysUser);
+
 
             String token = JwtHelper.createToken(sysUser.getId(), sysUser.getUsername());
             return Result.ok(token);

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="出差" name="出差" isExecutable="true">
+    <startEvent id="sid-a3103c36-9d5d-46b0-ac23-3faedfc7ac55"/>
+    <userTask id="sid-409ec267-a783-4db0-a0a6-bfda9e269b95" name="部门经理审批" activiti:assignee="lisi"/>
+    <sequenceFlow id="sid-26b41699-c970-47c4-a7ab-06adca92a56a" sourceRef="sid-a3103c36-9d5d-46b0-ac23-3faedfc7ac55" targetRef="sid-409ec267-a783-4db0-a0a6-bfda9e269b95"/>
+    <endEvent id="sid-9a030ce4-1fda-41b7-aecd-3882703d1d20"/>
+    <sequenceFlow id="sid-4bddc7ab-4366-4631-b42f-26cc33ced929" sourceRef="sid-409ec267-a783-4db0-a0a6-bfda9e269b95" targetRef="sid-9a030ce4-1fda-41b7-aecd-3882703d1d20"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_出差">
+    <bpmndi:BPMNPlane bpmnElement="出差" id="BPMNPlane_出差">
+      <bpmndi:BPMNShape id="shape-6666840d-5603-4afa-b09d-3c81ac0b0bd9" bpmnElement="sid-a3103c36-9d5d-46b0-ac23-3faedfc7ac55">
+        <omgdc:Bounds x="33.0" y="-138.75" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-51cfe8cc-51c2-4fd5-9921-25f8f6ef120b" bpmnElement="sid-409ec267-a783-4db0-a0a6-bfda9e269b95">
+        <omgdc:Bounds x="-2.0" y="-82.25" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-87d0a7f7-bc4f-4889-91a2-162e7c41fe4d" bpmnElement="sid-26b41699-c970-47c4-a7ab-06adca92a56a">
+        <omgdi:waypoint x="48.0" y="-108.75"/>
+        <omgdi:waypoint x="48.0" y="-82.25"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="shape-ab9ff78d-755d-4198-8945-0d8e5449ad3b" bpmnElement="sid-9a030ce4-1fda-41b7-aecd-3882703d1d20">
+        <omgdc:Bounds x="33.0" y="41.25" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-09567653-cfcf-4a6a-a5bf-5a1348f0ffca" bpmnElement="sid-4bddc7ab-4366-4631-b42f-26cc33ced929">
+        <omgdi:waypoint x="48.0" y="-2.25"/>
+        <omgdi:waypoint x="48.0" y="41.25"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
